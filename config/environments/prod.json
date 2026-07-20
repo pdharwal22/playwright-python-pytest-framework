@@ -1,0 +1,11 @@
+{
+    "base_url": "https://www.saucedemo.com/",
+    "browser": "chromium",
+    "headless": false,
+    "timeout": 30000,
+    "slow_mo": 0,
+    "viewport": {
+        "width": 1920,
+        "height": 1080
+    }
+}
