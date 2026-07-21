@@ -1,0 +1,19 @@
+{
+    "application": {
+        "base_url": "https://www.saucedemo.com/"
+    },
+    "browser": {
+        "name": "chromium",
+        "headless": false,
+        "slow_mo": 0
+    },
+    "timeouts": {
+        "default": 30000,
+        "navigation": 60000
+    },
+    "reports": {
+        "take_screenshot_on_failure": true,
+        "record_video": false,
+        "trace": true
+    }
+}
