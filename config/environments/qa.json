@@ -4,7 +4,7 @@
     },
     "browser": {
         "name": "chromium",
-        "headless": false,
+        "headless": true,
         "slow_mo": 700
     },
     "timeouts": {
