@@ -5,8 +5,15 @@ from pages.checkout_page import CheckoutPage
 from pages.inventory_page import InventoryPage
 from pages.login_page import LoginPage
 import pytest
+import allure
 
 
+@allure.epic("SauceDemo Application")
+@allure.feature("Checkout")
+@allure.story("Valid User Login")
+@allure.title("Verify valid user can login successfully")
+@allure.description("Verify that a valid user can successfully log into the SauceDemo application.")
+@allure.severity(allure.severity_level.CRITICAL)
 @pytest.mark.smoke
 @pytest.mark.regression
 @pytest.mark.e2e

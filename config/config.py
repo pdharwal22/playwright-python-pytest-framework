@@ -14,23 +14,52 @@ class ConfigManager:
     Responsible for loading and providing framework configuration.
     """
 
-    def __init__(self):
+    def __init__(self, environment=None):
         self._environment = None
         self._config = {}
 
         # self initialization configuration manager
-        self.load_environment()
+        self.load_environment(environment)
         self.load_configuration()
         self.validate()
 
-    def load_environment(self) -> None:
+    def load_environment(self, environment=None) -> None:
         """
-        Load the active environment from the .env file.
+        Load the active environment.
+
+        Priority:
+        1. Explicit environment passed as an argument.
+        2. ENVIRONMENT value from .env file.
         """
+        # Load variables from .env
         load_dotenv()
-        self._environment = os.getenv("ENVIRONMENT")
+
+        # Use explicitly provided environment first
+        if environment:
+            self._environment = environment
+        else:
+            # Otherwise use environment variable from .env
+            self._environment = os.getenv("ENVIRONMENT")
         if not self._environment:
             raise ValueError("ENVIRONMENT variable not set in .env file.")
+
+        print(f"Active environment: {self._environment}")
+
+
+    def set_environment(self, environment: str) -> None:
+        """
+        Set the active environment explicitly.
+        """
+        if not environment:
+            raise ValueError("Environment cannot be empty.")
+        self._environment = environment
+
+
+    def get_environment(self) -> str:
+        """
+        Return the currently active environment.
+        """
+        return self._environment
 
 
     def load_configuration(self) -> None:
