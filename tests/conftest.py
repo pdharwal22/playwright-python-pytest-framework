@@ -16,14 +16,26 @@ def pytest_addoption(parser):
 
 
 @pytest.fixture(scope="session")
-def config():
+def config(request):
     """
     Provide a single ConfigManager instance for the entire test session.
     """
-    config_manager = ConfigManager()
-    config_manager.load_environment()
-    config_manager.load_configuration()
-    config_manager.validate()
+    # config_manager = ConfigManager()
+    # environment = request.config.getoption("--env")
+    # if environment:
+    #     config_manager.load_environment(environment)
+    # else:
+    #     config_manager.load_environment()
+    # config_manager.load_configuration()
+    # config_manager.validate()
+    # return config_manager
+
+    # Get environment from pytest command line
+    environment = request.config.getoption("--env")
+
+    # Create ConfigManager with explicit environment
+    config_manager = ConfigManager(environment=environment)
+
     return config_manager
 
 
@@ -138,8 +150,9 @@ def capture_failure_artifacts(request, page, context, config):
         print(f"\nScreenshot saved: {screenshot_path}")
 
         # Attach screenshot to Allure
-        with open(screenshot_path, "rb") as screenshot:
-            allure.attach.file(screenshot.read(), name=f"{test_name} - Failure Screenshot", attachment_type=allure.attachment_type.PNG)
+        # with open(screenshot_path, "rb") as screenshot:
+        #     allure.attach.file(screenshot.read(), name=f"{test_name} - Failure Screenshot", attachment_type=allure.attachment_type.PNG)
+        allure.attach.file(str(screenshot_path), name=f"{test_name} - Failure Screenshot", attachment_type=allure.attachment_type.PNG)
 
     # --------------------------------
     # Playwright Trace
@@ -150,8 +163,9 @@ def capture_failure_artifacts(request, page, context, config):
         print(f"Trace saved: {trace_path}")
 
         # Attach trace to Allure
-        with open(trace_path, "rb") as trace:
-            allure.attach.file(trace.read(), name=f"{test_name} - Playwright Trace", attachment_type=allure.attachment_type.ZIP)
+        # with open(trace_path, "rb") as trace:
+        #     allure.attach.file(trace.read(), name=f"{test_name} - Playwright Trace", attachment_type=allure.attachment_type.ZIP)
+        allure.attach.file(str(trace_path), name=f"{test_name} - Playwright Trace", attachment_type=allure.attachment_type.ZIP)
 
 
 def pytest_configure(config):
