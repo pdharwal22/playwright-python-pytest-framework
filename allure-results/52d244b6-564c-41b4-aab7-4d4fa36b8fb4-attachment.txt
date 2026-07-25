@@ -1,0 +1,4 @@
+2026-07-25 15:14:18,874 | INFO | pages.login_page | Attempting login with username: standard_user
+2026-07-25 15:14:21,093 | INFO | pages.login_page | Login action completed for username standard_user
+2026-07-25 15:14:21,094 | INFO | pages.inventory_page | Adding product to cart: Sauce Labs Backpack
+2026-07-25 15:14:21,825 | INFO | pages.inventory_page | Product added to cart: Sauce Labs Backpack

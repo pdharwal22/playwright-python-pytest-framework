@@ -33,6 +33,15 @@ class ConfigManager:
             raise ValueError("ENVIRONMENT variable not set in .env file.")
 
 
+    def set_environment(self, environment: str) -> None:
+        """
+        Set the active environment explicitly.
+        """
+        if not environment:
+            raise ValueError("Environment cannot be empty.")
+        self._environment = environment
+
+
     def load_configuration(self) -> None:
         """
         Load configuration from the active environment JSON file.
