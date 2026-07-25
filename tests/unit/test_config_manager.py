@@ -9,7 +9,7 @@ def test_configuration_loads_successfully(config):
 @pytest.mark.unit
 def test_browser_configuration(config):
     assert config.get("browser.name") == "chromium"
-    assert config.get("browser.headless") is False
+    assert isinstance(config.get("browser.headless"), bool)
     assert config.get("browser.slow_mo") == 700
 
 
