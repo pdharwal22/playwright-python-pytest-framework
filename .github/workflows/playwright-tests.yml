@@ -42,7 +42,7 @@ jobs:
       # 5. Run tests
       - name: Run Playwright tests
         run:  |
-          pytest -n 2 -v --env=qa --alluredir=allure-results --html=reports/html/report.html --self-contained-html
+          pytest -n 2 -v --env=ci --alluredir=allure-results --html=reports/html/report.html --self-contained-html
 
       # 6. Upload Allure results
       - name: Upload Allure Results
