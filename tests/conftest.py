@@ -94,6 +94,27 @@ def page(context):
     page_instance.close()
 
 
+@pytest.fixture(scope="function")
+def authenticated_page(page, config, test_data):
+    """
+    Create a new page and authenticate a valid user.
+    This fixture is used by tests that require an already authenticated SauceDemo session.
+    """
+    from pages.login_page import LoginPage
+
+    login_page = LoginPage(page)
+
+    # Navigate to application
+    login_page.navigate(config.get("application.base_url"))
+
+    # Retrieve the first valid user from test data
+    valid_user = test_data.get("users.valid_user")[0]
+
+    # Login with valid credentials
+    login_page.login(username=valid_user["username"], password=valid_user["password"])
+    return page
+
+
 @pytest.fixture(scope="session")
 def test_data():
     """

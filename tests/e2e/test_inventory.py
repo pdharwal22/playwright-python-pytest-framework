@@ -1,5 +1,5 @@
 from pages.inventory_page import InventoryPage
-from pages.login_page import LoginPage
+# from pages.login_page import LoginPage
 import pytest
 import allure
 import json
@@ -28,25 +28,25 @@ inventory_test_data = load_inventory_test_data()
 @pytest.mark.smoke
 @pytest.mark.e2e
 @pytest.mark.parametrize("product_data", inventory_test_data.values(), ids=lambda product: product["name"])
-def test_add_product_to_cart(page, config, test_data, product_data):
+def test_add_product_to_cart(authenticated_page, product_data):
     """
     Verify that a user can add different products to the shopping cart.
     """
 
-    with allure.step("Navigate to SauceDemo application"):
-        login_page = LoginPage(page)
-        login_page.navigate(config.get("application.base_url"))
+    # with allure.step("Navigate to SauceDemo application"):
+    #     login_page = LoginPage(page)
+    #     login_page.navigate(config.get("application.base_url"))
 
-    with allure.step("Retrieve valid user credentials"):
-        valid_user = test_data.get("users.valid_user")[0]
-        username = valid_user["username"]
-        password = valid_user["password"]
+    # with allure.step("Retrieve valid user credentials"):
+    #     valid_user = test_data.get("users.valid_user")[0]
+    #     username = valid_user["username"]
+    #     password = valid_user["password"]
 
-    with allure.step("Login with valid credentials"):
-        login_page.login(username=username, password=password)
+    # with allure.step("Login with valid credentials"):
+    #     login_page.login(username=username, password=password)
 
     with allure.step("Verify inventory page is loaded"):
-        inventory_page = InventoryPage(page)
+        inventory_page = InventoryPage(authenticated_page)
         assert inventory_page.is_loaded()
 
     with allure.step(f"Retrieve product name: {product_data['name']}"):
