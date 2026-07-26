@@ -139,7 +139,7 @@ def pytest_runtest_makereport(item, call):
 
 
 @pytest.fixture(autouse=True)
-def capture_failure_artifacts(request, page, context, config):
+def capture_failure_artifacts(request, config):
     """
     Capture screenshot and Playwright trace when a test fails
     and attach them to the Allure report.
@@ -149,7 +149,18 @@ def capture_failure_artifacts(request, page, context, config):
 
     # Get the test execution report
     report = getattr(request.node, "rep_call", None)
+
+    # Only continue if the test actually failed
     if not report or not report.failed:
+        return
+
+    # Try to retrieve page and context from the test request.
+    # This prevents unit tests from unnecessarliy creating Playwright objects.
+    page = request.node.funcargs.get("page")
+    context = request.node.funcargs.get("context")
+
+    # If the test doesn't use Playwright, there is nothing to capture.
+    if page is None or context is None:
         return
     
     # Create report directories
@@ -180,7 +191,8 @@ def capture_failure_artifacts(request, page, context, config):
     # --------------------------------
     if config.get("reports.trace"):
         trace_path = (trace_directory/f"{test_name}.zip")
-        context.tracing.stop(path=str(trace_path))
+        if config.get("reports.trace"):
+            context.tracing.stop(path=str(trace_path))
         print(f"Trace saved: {trace_path}")
 
         # Attach trace to Allure
