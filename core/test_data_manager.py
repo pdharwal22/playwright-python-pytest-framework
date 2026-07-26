@@ -44,3 +44,13 @@ class TestDataManager:
         
         return value
         
+
+    def get_list(self, key: str) -> list:
+        """
+        Retrieve a list of test data using a dot-separated key.
+        """
+        value = self.get(key)
+        if not isinstance(value, list):
+            raise TypeError(f"Test data at '{key}' must be a list.")
+        return value
+

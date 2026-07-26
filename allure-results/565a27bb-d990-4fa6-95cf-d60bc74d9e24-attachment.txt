@@ -1,0 +1,2 @@
+2026-07-26 11:47:53,760 | INFO | pages.login_page | Attempting login with username: performance_glitch_user
+2026-07-26 11:48:00,947 | INFO | pages.login_page | Login action completed for username performance_glitch_user

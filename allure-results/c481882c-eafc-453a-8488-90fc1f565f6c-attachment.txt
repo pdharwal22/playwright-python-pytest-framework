@@ -1,0 +1,5 @@
+2026-07-26 11:47:27,350 | INFO | pages.login_page | Attempting login with username: standard_user
+2026-07-26 11:47:29,568 | INFO | pages.login_page | Login action completed for username standard_user
+2026-07-26 11:47:29,578 | INFO | pages.inventory_page | Inventory page loaded: True
+2026-07-26 11:47:29,578 | INFO | pages.inventory_page | Adding product to cart: Sauce Labs Bike Light
+2026-07-26 11:47:30,302 | INFO | pages.inventory_page | Product added to cart: Sauce Labs Bike Light

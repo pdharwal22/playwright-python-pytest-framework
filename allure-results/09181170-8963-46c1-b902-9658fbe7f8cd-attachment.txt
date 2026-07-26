@@ -1,0 +1,2 @@
+2026-07-26 11:46:08,575 | INFO | pages.login_page | Attempting login with username: invalid_user
+2026-07-26 11:46:10,768 | INFO | pages.login_page | Login action completed for username invalid_user
