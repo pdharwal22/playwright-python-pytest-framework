@@ -1,1 +1,30 @@
+# Virtual Environment
+.venv
+
+# Python cache
+__pycache__/
+*.pyc
+*.py[cod]
+
+# Environment Variables
 .env
+
+# Reports
+reports/
+logs/
+screenshots/
+
+# Playwright artifacts
+test-results/
+playwright-report/
+
+# Test Reports
+reports/
+
+# Allure
+allure-resutls/
+allure-report/
+
+# Pytest
+.pytest_cache/
+

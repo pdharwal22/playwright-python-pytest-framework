@@ -1,0 +1,2 @@
+INFO     pages.login_page:login_page.py:63 Attempting login with username: invalid_user
+INFO     pages.login_page:login_page.py:67 Login action completed for username invalid_user

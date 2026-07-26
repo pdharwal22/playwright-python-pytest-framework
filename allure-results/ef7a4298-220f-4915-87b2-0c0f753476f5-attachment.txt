@@ -1,0 +1,2 @@
+2026-07-26 11:46:16,689 | INFO | pages.login_page | Attempting login with username: locked_out_user
+2026-07-26 11:46:18,897 | INFO | pages.login_page | Login action completed for username locked_out_user
