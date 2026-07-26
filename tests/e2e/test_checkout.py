@@ -3,7 +3,7 @@ from pages.checkout_complete_page import CheckoutCompletePage
 from pages.checkout_overview_page import CheckoutOverviewPage
 from pages.checkout_page import CheckoutPage
 from pages.inventory_page import InventoryPage
-from pages.login_page import LoginPage
+# from pages.login_page import LoginPage
 import pytest
 import allure
 import json
@@ -58,25 +58,25 @@ checkout_test_ids = [
 @pytest.mark.regression
 @pytest.mark.e2e
 @pytest.mark.parametrize("product_data, customer_data", checkout_test_cases, ids=checkout_test_ids)
-def test_complete_checkout_flow(page, config, test_data, product_data, customer_data):
+def test_complete_checkout_flow(authenticated_page, product_data, customer_data):
     """
     Verify that a user can complete a complete product purchase flow using data-driven product and customer combinations.
     """
 
-    with allure.step("Navigate to SauceDemo application"):
-        login_page = LoginPage(page)
-        login_page.navigate(config.get("application.base_url"))
+    # with allure.step("Navigate to SauceDemo application"):
+    #     login_page = LoginPage(page)
+    #     login_page.navigate(config.get("application.base_url"))
 
-    with allure.step("Retrieve valid user credentials"):
-        valid_user = test_data.get("users.valid_user")[0]
-        username = valid_user["username"]
-        password = valid_user["password"]
+    # with allure.step("Retrieve valid user credentials"):
+    #     valid_user = test_data.get("users.valid_user")[0]
+    #     username = valid_user["username"]
+    #     password = valid_user["password"]
 
-    with allure.step(f"Login with user: {valid_user['test_id']}"):
-        login_page.login(username=username, password=password)
+    # with allure.step(f"Login with user: {valid_user['test_id']}"):
+    #     login_page.login(username=username, password=password)
 
     with allure.step("Verify inventory page is loaded"):
-        inventory_page = InventoryPage(page)
+        inventory_page = InventoryPage(authenticated_page)
         assert inventory_page.is_loaded()
 
     with allure.step(f"Retrieve product name: {product_data['name']}"):
@@ -89,7 +89,7 @@ def test_complete_checkout_flow(page, config, test_data, product_data, customer_
         inventory_page.open_cart()
 
     with allure.step("Verify cart page is loaded"):
-        cart_page = CartPage(page)
+        cart_page = CartPage(authenticated_page)
         assert cart_page.is_loaded()
 
     with allure.step(f"Verify {product_name} is present in cart"):
@@ -99,7 +99,7 @@ def test_complete_checkout_flow(page, config, test_data, product_data, customer_
         cart_page.click_checkout()
 
     with allure.step("Verify checkout information page is loaded"):
-        checkout_page = CheckoutPage(page)
+        checkout_page = CheckoutPage(authenticated_page)
         assert checkout_page.is_loaded()
 
     with allure.step(f"Enter customer information for {customer_data['test_id']}"):
@@ -109,7 +109,7 @@ def test_complete_checkout_flow(page, config, test_data, product_data, customer_
         checkout_page.click_continue()
 
     with allure.step("Verify checkout overview page is loaded"):
-        checkout_overview_page = CheckoutOverviewPage(page)
+        checkout_overview_page = CheckoutOverviewPage(authenticated_page)
         assert checkout_overview_page.is_loaded()
 
     with allure.step(f"Verify {product_name} is present in order"):
@@ -119,6 +119,6 @@ def test_complete_checkout_flow(page, config, test_data, product_data, customer_
         checkout_overview_page.click_finish()
 
     with allure.step("Verify order confirmation message"):
-        checkout_complete_page = CheckoutCompletePage(page)
+        checkout_complete_page = CheckoutCompletePage(authenticated_page)
         assert (checkout_complete_page.get_confirmation_message() == "Thank you for your order!")
 
