@@ -1,0 +1,2 @@
+Active environment: ci
+Running tests against environment: <bound method ConfigManager.get_environment of <config.config.ConfigManager object at 0x108591d30>>

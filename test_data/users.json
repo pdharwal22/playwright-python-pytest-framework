@@ -1,15 +1,37 @@
 {
-    "valid_user": {
-        "username": "standard_user",
-        "password": "secret_sauce"
-    },
-    "invalid_user": {
-        "username": "invalid_user",
-        "password": "invalid_password"
-    },
-    "locked_out_user": {
-        "username": "locked_out_user",
-        "password": "secret_sauce"
-    }
+    "valid_user": [
+        {
+            "test_id": "valid_standard_user",
+            "username": "standard_user",
+            "password": "secret_sauce",
+            "expected_url": "/inventory.html"
+        },
+        {
+            "test_id": "valid_problem_user",
+            "username": "problem_user",
+            "password": "secret_sauce",
+            "expected_url": "/inventory.html"
+        },
+        {
+            "test_id": "valid_performance_glitch_user",
+            "username": "performance_glitch_user",
+            "password": "secret_sauce",
+            "expected_url": "/inventory.html"
+        }
+    ],
+    "invalid_users": [
+        {
+            "test_id": "invalid_credentials",
+            "username": "invalid_user",
+            "password": "invalid_password",
+            "expected_error": "Epic sadface: Username and password do not match any user in this service"
+        },
+        {
+            "test_id": "locked_out_user",
+            "username": "locked_out_user",
+            "password": "secret_sauce",
+            "expected_error": "Epic sadface: Sorry, this user has been locked out."
+        }
+    ]
 }
 

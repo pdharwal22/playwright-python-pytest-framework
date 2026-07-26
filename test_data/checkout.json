@@ -1,0 +1,17 @@
+{
+    "valid_customers": [
+        {
+            "test_id": "customer_01",
+            "first_name": "Prateek",
+            "last_name": "Dharwal",
+            "postal_code": "141001"
+        },
+        {
+            "test_id": "customer_02",
+            "first_name": "John",
+            "last_name": "Doe",
+            "postal_code": "10001"
+        }
+    ]
+}
+

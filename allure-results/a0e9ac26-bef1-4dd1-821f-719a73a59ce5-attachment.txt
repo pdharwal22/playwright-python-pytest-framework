@@ -1,0 +1,5 @@
+INFO     pages.login_page:login_page.py:63 Attempting login with username: standard_user
+INFO     pages.login_page:login_page.py:67 Login action completed for username standard_user
+INFO     pages.inventory_page:inventory_page.py:26 Inventory page loaded: True
+INFO     pages.inventory_page:inventory_page.py:37 Adding product to cart: Sauce Labs Backpack
+INFO     pages.inventory_page:inventory_page.py:41 Product added to cart: Sauce Labs Backpack
