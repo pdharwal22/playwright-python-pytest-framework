@@ -6,6 +6,7 @@ from core.test_data_manager import TestDataManager
 from pathlib import Path
 from datetime import datetime
 import allure
+from flows.authentication_flow import AuthenticationFlow
 
 
 def pytest_addoption(parser):
@@ -20,15 +21,6 @@ def config(request):
     """
     Provide a single ConfigManager instance for the entire test session.
     """
-    # config_manager = ConfigManager()
-    # environment = request.config.getoption("--env")
-    # if environment:
-    #     config_manager.load_environment(environment)
-    # else:
-    #     config_manager.load_environment()
-    # config_manager.load_configuration()
-    # config_manager.validate()
-    # return config_manager
 
     # Get environment from pytest command line
     environment = request.config.getoption("--env")
@@ -100,18 +92,9 @@ def authenticated_page(page, config, test_data):
     Create a new page and authenticate a valid user.
     This fixture is used by tests that require an already authenticated SauceDemo session.
     """
-    from pages.login_page import LoginPage
-
-    login_page = LoginPage(page)
-
-    # Navigate to application
-    login_page.navigate(config.get("application.base_url"))
-
-    # Retrieve the first valid user from test data
-    valid_user = test_data.get("users.valid_user")[0]
-
-    # Login with valid credentials
-    login_page.login(username=valid_user["username"], password=valid_user["password"])
+    
+    authentication_flow = AuthenticationFlow(page=page, config=config, test_data=test_data)
+    authentication_flow.login_as_valid_user()
     return page
 
 
@@ -123,6 +106,7 @@ def test_data():
     data_manager = TestDataManager()
     data_manager.load_data(file_name="users.json", data_key="users")
     data_manager.load_data(file_name="products.json", data_key="products")
+    data_manager.load_data(file_name="checkout.json", data_key="checkout")
     return data_manager
 
 
