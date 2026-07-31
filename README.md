@@ -172,7 +172,7 @@ The same test suite can therefore be executed against different environments wit
 
 **Activate Virtual Environment**
 
-- macOS/Linux: source.venv/bin/activate
+- macOS/Linux: source .venv/bin/activate
 - Windows: .venv\Scripts\activate
 
 **Install Dependencies**
@@ -287,7 +287,7 @@ The repository maintains separate branches to demonstrate different framework im
 | main | Stable core Page Object Model implementation |
 | develop | Active development and integration |
 | feature/playwright-browser-manager | Browser Manager implementation and framework improvements |
-| Business Flow feature branch | Separate Business Flow / Workflow Layer implementation |
+| feature/business-flow-layer | Separate Business Flow / Workflow Layer implementation |
 
 The **POM implementation and Business Flow implementation are intentionally maintained separately** so both approaches can be referenced for future learning and architectural comparison.
 
@@ -303,7 +303,7 @@ The framework focuses on:
 - Centralized configuration
 - Reusable fixtures
 - Scalable test organization
-- Clear separation between test logic and UI - interaction logic
+- Clear separation between test logic and UI interaction logic
 - CI/CD integration
 
 ---
