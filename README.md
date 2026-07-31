@@ -77,41 +77,41 @@ SauceDemo Application
 The framework currently covers the major SauceDemo workflows.
 
 **Authentication**
-    - Valid user login
-    - Multiple valid users
-    - Invalid credentials
-    - Locked-out user
-    - Login error validation
-    - Expected URL validation
+- Valid user login
+- Multiple valid users
+- Invalid credentials
+- Locked-out user
+- Login error validation
+- Expected URL validation
 
 **Inventory**
-    - Inventory page validation
-    - Add products to cart
-    - Multiple product scenarios
-    - Data-driven product testing
-    - Cart item count validation
+- Inventory page validation
+- Add products to cart
+- Multiple product scenarios
+- Data-driven product testing
+- Cart item count validation
 
 **Shopping Cart**
-    - Add product to cart
-    - Open shopping cart
-    - Cart page validation
-    - Verify selected product exists in cart
-    - Verify product name is displayed
-    - Multiple product scenarios
+- Add product to cart
+- Open shopping cart
+- Cart page validation
+- Verify selected product exists in cart
+- Verify product name is displayed
+- Multiple product scenarios
 
 **Checkout**
-    - Navigate from cart to checkout
-    - Checkout page validation
-    - Customer information entry
-    - Checkout overview validation
-    - Product validation in order summary
-    - Complete order
-    - Order confirmation validation
-    - Multiple customer datasets
+- Navigate from cart to checkout
+- Checkout page validation
+- Customer information entry
+- Checkout overview validation
+- Product validation in order summary
+- Complete order
+- Order confirmation validation
+- Multiple customer datasets
 
 **Framework**
-    - Browser launch validation
-    - Configuration Manager unit testing
+- Browser launch validation
+- Configuration Manager unit testing
 
 ---
 
@@ -127,9 +127,9 @@ test_data/
 This allows the same test logic to execute against multiple datasets without duplicating test methods.
 
 Examples include:
-    - Multiple login users
-    - Multiple products
-    - Multiple checkout customers
+- Multiple login users
+- Multiple products
+- Multiple checkout customers
 
 This approach improves test maintainability and makes it easier to extend test coverage.
 
@@ -140,16 +140,16 @@ This approach improves test maintainability and makes it easier to extend test c
 The framework supports environment-specific configuration.
 
 Available environments include:
-    - QA
-    - UAT
-    - CI
-    - Production
+- QA
+- UAT
+- CI
+- Production
 
 Configuration files are maintained under:
-config/environments/
+- config/environments/
 
 Tests can be executed against a specific environment using:
-pytest --env=qa
+- pytest --env=qa
 
 The same test suite can therefore be executed against different environments without modifying the test implementation.
 
@@ -158,50 +158,50 @@ The same test suite can therefore be executed against different environments wit
 ## Installation
 
 **Prerequisites**
-    - Python 3.x
-    - Git
-    - pip
-    - Playwright
+- Python 3.x
+- Git
+- pip
+- Playwright
 
 **Clone the Repository**
-git clone git@github.com:pdharwal22/playwright-python-pytest-framework.git
-cd playwright-python-pytest-framework
+- git clone git@github.com:pdharwal22/playwright-python-pytest-framework.git
+- cd playwright-python-pytest-framework
 
 **Create Virtual Environment**
-python -m venv .venv
+- python -m venv .venv
 
 **Activate Virtual Environment**
 
-macOS/Linux: source.venv/bin/activate
-Windows: .venv\Scripts\activate
+- macOS/Linux: source.venv/bin/activate
+- Windows: .venv\Scripts\activate
 
 **Install Dependencies**
-pip install -r requirements.txt
+- pip install -r requirements.txt
 
 **Install Playwright Browsers**
-playwright install
+- playwright install
 
 ---
 
 ## Running Tests
 
 **Run Complete Test Suite**
-pytest
+- pytest
 
 **Run Tests against QA**
-pytest --env=qa
+- pytest --env=qa
 
 **Run Smoke Tests**
-pytest -m smoke
+- pytest -m smoke
 
 **Run Regression Tests**
-pytest -m regression
+- pytest -m regression
 
 **Run Tests in Parallel**
-pytest -n auto
+- pytest -n auto
 
 **Run a specific Test File**
-pytest tests/e2e/test_login.py -v
+- pytest tests/e2e/test_login.py -v
 
 ---
 
@@ -210,30 +210,30 @@ pytest tests/e2e/test_login.py -v
 **HTML Report**
 
 HTML reports are generated under:
-reports/html/
+- reports/html/
 
 **Allure Reports**
 
 Generate Allure results:
-pytest --alluredir=allure-results
+- pytest --alluredir=allure-results
 
 View the Allure report:
-allure serve allure-results
+- allure serve allure-results
 
 **Failure Artifacts**
 
 The framework automatically captures diagnostic artifacts when tests fail.
 
 **Screenshots**
-reports/screenshots/
+- reports/screenshots/
 
 **Playwright Traces**
-reports/traces/
+- reports/traces/
 
 Failure screenshots and traces are also attached to the Allure report.
 
 Playwright traces can be opened using:
-playwright show-trace reports/traces/<trace-file>.zip
+- playwright show-trace reports/traces/<trace-file>.zip
 
 These artifacts help investigate failed automation scenarios by providing browser actions, screenshots, DOM snapshots, and execution details.
 
@@ -242,18 +242,18 @@ These artifacts help investigate failed automation scenarios by providing browse
 The framework includes centralized logging for important test execution and framework events.
 
 Logs can help with troubleshooting:
-    - Browser initialization
-    - Application navigation
-    - Login operations
-    - Product interactions
-    - Test execution
-    - Failure investigation
+- Browser initialization
+- Application navigation
+- Login operations
+- Product interactions
+- Test execution
+- Failure investigation
 
 **Parallel Execution**
 
 The framework supports parallel test execution using **pytest-xdist**.
 
-pytest -n auto
+- pytest -n auto
 
 Each test uses isolated Playwright browser context to minimize test interference and support reliable parallel execution.
 
@@ -264,15 +264,15 @@ Each test uses isolated Playwright browser context to minimize test interference
 The project uses **GitHub Actions** for continuous integration.
 
 Workflow:
-.github/workflows/playwright-tests.yml
+- .github/workflows/playwright-tests.yml
 
 The CI workflow automatically:
-    - Checks out the repository
-    - Sets up Python
-    - Installs dependencies
-    - Installs Playwright browsers
-    - Executes the automated test suite
-    - Reports workflow status
+- Checks out the repository
+- Sets up Python
+- Installs dependencies
+- Installs Playwright browsers
+- Executes the automated test suite
+- Reports workflow status
 
 The workflow is triggered through repository changes and is used to validate the framework automatically.
 
@@ -282,11 +282,12 @@ The workflow is triggered through repository changes and is used to validate the
 
 The repository maintains separate branches to demonstrate different framework implementations.
 
-Branch | Purpose
-main | Stable core Page Object Model implementation
-develop | Active development and integration
-feature/playwright-browser-manager | Browser Manager implementation and framework improvements
-Business Flow feature branch | Separate Business Flow / Workflow Layer implementation
+| Branch | Purpose |
+|------------|---------|
+| main | Stable core Page Object Model implementation |
+| develop | Active development and integration |
+| feature/playwright-browser-manager | Browser Manager implementation and framework improvements |
+| Business Flow feature branch | Separate Business Flow / Workflow Layer implementation |
 
 The **POM implementation and Business Flow implementation are intentionally maintained separately** so both approaches can be referenced for future learning and architectural comparison.
 
@@ -295,15 +296,15 @@ The **POM implementation and Business Flow implementation are intentionally main
 ## Design Principles
 
 The framework focuses on:
-    - Separation of concerns
-    - Reusability
-    - Maintainability
-    - Data-driven testing
-    - Centralized configuration
-    - Reusable fixtures
-    - Scalable test organization
-    - Clear separation between test logic and UI - interaction logic
-    - CI/CD integration
+- Separation of concerns
+- Reusability
+- Maintainability
+- Data-driven testing
+- Centralized configuration
+- Reusable fixtures
+- Scalable test organization
+- Clear separation between test logic and UI - interaction logic
+- CI/CD integration
 
 ---
 
@@ -312,41 +313,41 @@ The framework focuses on:
 The framework is currently functional and all implemented local and CI test scenarios are passing.
 
 Implemented capabilities include:
-    - Page Object Model
-    - Data-driven testing
-    - JSON test data
-    - Reusable fixtures
-    - Authentication fixture
-    - Browser Manager
-    - Environment configuration
-    - Multiple environment support
-    - Allure reporting
-    - HTML reporting
-    - Failure screenshots
-    - Playwright traces
-    - Logging
-    - Parallel execution
-    - Unit testing
-    - End-to-end testing
-    - GitHub Actions CI/CD
-    - Authentication workflow
-    - Inventory workflow
-    - Shopping cart workflow
-    - Checkout workflow
-    - Business Flow implementation maintained separately
+- Page Object Model
+- Data-driven testing
+- JSON test data
+- Reusable fixtures
+- Authentication fixture
+- Browser Manager
+- Environment configuration
+- Multiple environment support
+- Allure reporting
+- HTML reporting
+- Failure screenshots
+- Playwright traces
+- Logging
+- Parallel execution
+- Unit testing
+- End-to-end testing
+- GitHub Actions CI/CD
+- Authentication workflow
+- Inventory workflow
+- Shopping cart workflow
+- Checkout workflow
+- Business Flow implementation maintained separately
 
 ---
 
 ## Future Enhancements
 
 Potential future improvements include:
-    - API automation integration
-    - WebSocket testing
-    - Expanded negative test coverage
-    - Docker-based execution
-    - Multi-browser CI matrix
-    - Additional reusable business workflows
-    - Enhanced CI artifact publishing
+- API automation integration
+- WebSocket testing
+- Expanded negative test coverage
+- Docker-based execution
+- Multi-browser CI matrix
+- Additional reusable business workflows
+- Enhanced CI artifact publishing
 
 ---
 
@@ -355,12 +356,12 @@ Potential future improvements include:
 **Prateek Dharwal**
 
 Automation Engineer focused on:
-    - Python
-    - Playwright
-    - Pytest
-    - UI Automation
-    - API Testing
-    - Test Framework Development
-    - CI/CD
-    - GitHub Actions
+- Python
+- Playwright
+- Pytest
+- UI Automation
+- API Testing
+- Test Framework Development
+- CI/CD
+- GitHub Actions
 
